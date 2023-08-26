@@ -5,15 +5,23 @@ const customer = {
     email: 'arseniisilkov22@gmail.com',
     password: '123456',
     phone: '+38012345678',
-    adress: 'Sadova street, 54',
+    adress: {
+        country: 'Ukraine',
+        city: 'Kyiv',
+        street: 'Sadova',
+        flat: 21, 
+    },
     showAdress () {
-        console.log(this.adress);
+        for (key in this.adress) {
+            console.log(`${key} : ${this.adress[key]}`)
+        }
     }, 
     changeNumber (newNumber) {
         this.phone = newNumber;
     },
 }
 
+customer.showAdress();
 customer.isMale = true;
 delete customer.adress;
 
@@ -23,9 +31,8 @@ for (key in customer) {
 
 const newCustomer = Object.assign({}, customer);
 console.dir(newCustomer);
-console.log(newCustomer == customer);
-const newCustomer2 = customer;
-console.log(newCustomer2 === customer);
+const newCustomer2 = {...customer};
+console.dir(newCustomer2);
 
 //2.......................................
 const cat = {
